@@ -67,7 +67,7 @@ function Service() {
 
 
 
-            <footer className="absolute bottom-0 w-screen ">
+            <footer className="absolute  w-screen bottom-0 ">
                 <img src="\Frame 33.png" alt="Frame 33" />
             </footer>
         </div>

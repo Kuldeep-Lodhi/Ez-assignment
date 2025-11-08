@@ -1,4 +1,14 @@
+import {useNavigate} from "react-router-dom"
+
+
 function Art() {
+     const navigate = useNavigate();
+    function handleBack(){
+        navigate(-1)
+    }
+
+
+
     return (
         <div className="w-screen h-screen">
 
@@ -63,7 +73,7 @@ function Art() {
 
 
             <div>
-                <button class="absolute top-[215px] left-[210px] w-[105px] h-[48px] px-4 py-3 gap-2 rounded-[24px] border border-black">
+                <button  onClick={handleBack} className="absolute top-[215px] left-[210px] w-[105px] h-[48px] px-4 py-3 gap-2 rounded-[24px] border border-black">
                     Back
                 </button>
             </div>
