@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Halant:wght@300;400;500;600;700&family=Island+Moments&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400&display=swap');
+
+.font-instrument {
+  font-family: 'Instrument Sans', sans-serif;
+}
+.font-island {
+  font-family: 'Island Moments', cursive;
+}
+
+.font-halant {
+  font-family: 'Halant', serif;
+}
+
+.body {
+  background-color: #FDD0C1; /* your main color */
+
+  /* Simulate texture (radius 80) + fine monotone noise (size 2) */
+  background-image:
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.3) 0%, transparent 80%),
+    radial-gradient(circle at 60% 60%, rgba(255, 255, 255, 0.25) 0%, transparent 80%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 2px,
+      rgba(253, 208, 193, 0.06) 4px
+    );
+
+  background-size:
+    80px 80px,   /* texture radius */
+    80px 80px,
+    2px 2px;     /* monotone noise size */
+
+  background-blend-mode: overlay, overlay, normal;
+}
