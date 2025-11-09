@@ -34,3 +34,8 @@
 
   background-blend-mode: overlay, overlay, normal;
 }
+
+body {
+  @apply bg-cover bg-center bg-no-repeat;
+  background-image: url('/Bg.png');
+}

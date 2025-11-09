@@ -10,43 +10,57 @@ function Contact() {
         message: ""
     })
 
-        
+    let [formMsg, setfromMsg] = useState("")
+
+    let [typing, setTyping] = useState(false)
+
+   
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         if (!formDetails.name || !formDetails.email || !formDetails.phone || !formDetails.message) {
             alert("all fields are required");
-            return;
-        }
-        
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if(!emailRegex.test(formDetails.email)){
-            alert(" invalid email")
+            setfromMsg("All fields are required")
             return;
         }
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formDetails.email)) {
+            alert(" invalid email")
+            setfromMsg("Invalid email")
+            return;
+        }
+
+        if(!formDetails.phone.length>9){
+            
+            setfromMsg("invalid PhoneNo ")
+            return;
+        }
 
 
 
         try {
-            let formRequest = await axios.post("https://vernanbackend.ezlab.in/api/contact-us/",{
-          name: formDetails.name,
-          email: formDetails.email,
-          phone: formDetails.phone,
-          message: formDetails.message
-        })
+            let formRequest = await axios.post("https://vernanbackend.ezlab.in/api/contact-us/", {
+                name: formDetails.name.trim(),
+                email: formDetails.email.trim(),
+                phone: formDetails.phone.trim(),
+                message: formDetails.message.trim()
+            })
 
 
-        if(formRequest.status === 201){
-            alert(formRequest.data.message)
-            setFormDetails({ name: "", email: "", phone: "", message: "" });
-        }
-            
+            if (formRequest.status === 201) {
+                alert(formRequest.data.message)
+                setfromMsg(formRequest.data.message)
+             
+                setFormDetails({ name: "", email: "", phone: "", message: "" });
+            }
+
         } catch (error) {
             console.error(error)
             alert("something went wrong")
-            
+            setfromMsg("Something went-wrong")
+
         }
 
 
@@ -57,62 +71,99 @@ function Contact() {
     function handleChange(e) {
         let { value, name } = e.target
         setFormDetails({ ...formDetails, [name]: value })
+        setTyping(!typing)
 
 
     }
 
 
     return (
-        <div className="w-screen h-screen">
+        <div className="w-screen h-screen  flex   gap-3    ">
+             <img src="circle2.png" alt="circle2" className=" absolute hidden  xl:block w-[40%] h-[30%]  z-1 -right-4 mix-blend-darker xl:opacity-70  "/>
 
-            <div className="absolute bg-amber-500 top-[200px] left-[1010px] w-[700px] h-[679px] opacity-100 rotate-0 gap-[80px]">
-                <p className="font-['Halant'] font-normal text-[40px] leading-[100%] tracking-[0] text-center">
-                    Join the Story
+            <div className="    w-[40%]   opacity-100 rotate-0 flex items-center flex-col justify-center  text-center">
+                <p className="font-['Instrument_Sans'] h-[80%] flex items-center  font-normal s ml-[10%]  leading-[100%] tracking-[0]">
+                    Whether you have an idea, a question, or simply want to explore how V
+                    can work together, V're just a message away.Let's catch up over coffee.Great
+                    stories always begin with a good conversation
                 </p>
 
-                <p className="font-['Instrument_Sans'] font-normal text-[24px] leading-[100%] tracking-[0] text-center pt-5 pb-8">
-                    Ready to bring your vision to life? Let’s talk.
-                </p>
+
+
+                 <div className="  w-full flex justify-start  ">
+                    <img src="circle.png" alt="circle" className="   w-[50%]  hidden xl:block  "/>
+
+                 </div>
+
+            </div>
+
+           
 
 
 
 
 
-                <form className="w-[700px] h-[375px] opacity-100 rotate-0 gap-[20px] bg-green-600" onSubmit={handleSubmit}>
+
+            <div className="  w-[55%]  flex flex-col  m-4 justify-center  ">
+               
+                <div className="">
+                    <p className="font-['Halant'] font-normal   xl:text-[40px]  text-center">
+                        Join the Story
+                    </p>
+
+                    <p className="font-['Instrument_Sans'] font-normal sm:text-[24px] text-center pt-5 pb-8">
+                        Ready to bring your vision to life? Let’s talk.
+                    </p>
+
+                </div>
 
 
-                    <input type="text" name="name" value={formDetails.name} onChange={handleChange} className="  w-[700px] max-w-[808px] h-[43px] min-h-[43px] opacity-100 rotate-0 px-[12px] py-[10px] border border-[#EAEAEA] rounded-[2px] mb-5 bg-[#FFFFFF]" required="true" placeholder="your name" />
 
-                    <input type="email" name="email" value={formDetails.email} onChange={handleChange} className=" w-[700px] max-w-[808px] h-[43px] min-h-[43px] opacity-100 rotate-0 px-[12px] py-[10px] border border-[#EAEAEA] rounded-[2px] mb-5 bg-[#FFFFFF]" required="true" placeholder="your email" />
+                <form className="  w-[90%]  flex flex-col m-2.5 gap-2     " onSubmit={handleSubmit} >
+                    <div className="flex flex-col m-2.5 gap-2  ">
+                        <div onChange={handleChange} className=" h-20 bg-[#FFFFFF] pl-4.5 text-center  "  >
+                            <p className="font-island  xl:text-4xl font-bold sm:text-3xl">form status</p>
+                            <p >
+                                {formMsg?<p className="text-red-600 ">{formMsg}</p>:<p className="text-green-600 text-center">{typing ? "Typing..." : <p className="text-red-500">Waiting...</p>}</p>
+}
 
-                    <input type="text" name="phone" value={formDetails.phone} onChange={handleChange} className=" w-[700px] max-w-[808px] h-[43px] min-h-[43px] opacity-100 rotate-0 px-[12px] py-[10px] border border-[#EAEAEA] rounded-[2px] mb-5 bg-[#FFFFFF]" required="true" placeholder="phone" />
+                            </p>
 
-                    <textarea name="message" value={formDetails.message} onChange={handleChange} className="w-[700px] h-[120px] opacity-100 rotate-0 border border-[1px] px-[12px] py-[12px] rounded-[2px]  border-[#EAEAEA] bg-[#FFFFFF] rounded-[2px] overflow-auto resize-none" placeholder="your message">
+                            
+                        </div>
 
-                    </textarea>
+                        <input type="text" name="name" value={formDetails.name} onChange={handleChange} className=" placeholder:text-orange-500 h-12 outline-orange-400 pl-4.5 bg-[#FFFFFF]" required placeholder="your name" />
 
+                        <input type="email" name="email" value={formDetails.email} onChange={handleChange} className=" placeholder:text-orange-500 h-12 outline-orange-400 pl-4.5 bg-[#FFFFFF]" required placeholder="your email" />
 
-                    <div className="flex items-center bg-pink-400 justify-center">
-                        <button className=" w-[93px] h-[46px]  bg-[#F15D2B]  text-[#FFFF] mt-2 rotate-0 px-4 py-[12px] gap-[8px] rounded-[24px]">
-                            Button
+                        <input type="text" name="phone" value={formDetails.phone} onChange={handleChange} className=" placeholder:text-orange-500 h-12 outline-orange-400 pl-4.5 bg-[#FFFFFF]" required placeholder="phone" />
+
+                        <textarea name="message" value={formDetails.message} onChange={handleChange} className="placeholder:text-orange-500 h-30 outline-orange-400 pl-4.5 bg-[#FFFFFF] rounded-xl overflow-auto resize-none" placeholder="your message">
+
+                        </textarea>
+                    </div>
+
+                    <div className="flex items-center  justify-center">
+                        <button className="  bg-[#F15D2B] p-1.5 text-[#FFFF]  rounded-xl ">
+                            Submit
                         </button>
                     </div>
 
 
 
-
+                    <div className="   text-center ">
+                        <footer className=" font-bold  xl:flex justify-evenly text-[#F15D2B]   ">
+                            <p>vernita@varnanfilms.co.in</p>
+                            <p>+91 98736 84567</p>
+                        </footer>
+                    </div>
 
                 </form>
 
 
 
 
-                <div className="flex justify-center bg-pink-200 w-full h-15 mt-3">
-                    <footer className="w-[374px] h-full font-bold   bg-green-300 opacity-100 rotate-0 gap-[20px] flex justify-center items-center">
-                        <p>vernita@varnanfilms.co.in</p>
-                        <p>+91 98736 84567</p>
-                    </footer>
-                </div>
+
 
             </div>
 
@@ -121,12 +172,7 @@ function Contact() {
 
 
 
-            <div className="absolute top-[467px] left-[210px] w-[600px] h-[145px] opacity-100 rotate-0">
-                <p className="font-['Instrument_Sans'] font-normal text-[24px] leading-[100%] tracking-[0]">
-                    Whether you have an idea, a question, or simply want to explore how V can work together, V're just a message away.Let's catch up over coffee.Great stories always begin with a good conversation
-                </p>
 
-            </div>
 
 
         </div>

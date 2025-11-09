@@ -3,7 +3,28 @@
 
 function Home() {
     return (
-        <div className="w-screen h-screen bg-[#fffff]">
+        <div className="w-screen h-screen bg-[#fffff] flex ">
+
+
+
+
+
+         <div className=" w-[45%]  h-[90%]  m-3 flex  justify-center items-center">
+            <div class=" relative    h-[45%] w-[90%] xl:h-[70%]    opacity-100  ">
+                <img src="/Hero Mandala.png" alt="Hero Mandala" className="w-full h-full  object-fit" />
+
+
+
+
+
+                <div class=" absolute inset-0   top-[40%] left-[10%] xl:left-[20%] xl:top-[30%]  opacity-100 ">
+                    <img src="/VFilms Logo.png" alt="VFilms logo" />
+
+                </div>
+
+            </div>
+
+        </div>   
 
             
 
@@ -12,54 +33,65 @@ function Home() {
 
 
 
+        <div className="  w-[50%] m-3  flex justify-center flex-col items-center gap-[10%] ">
 
 
-            <div className="w-[825px] h-[230px] bg-gray-700 top-[234px] left-[897px] absolute text-[#0F3255]">
 
 
-                <p className="absolute font-island font-normal text-[100px] leading-[100%] tracking-normal text-center"> Varnan is where stories find their voice and form</p>
+
+
+
+            <div className="w-full h-[40%]     text-[#0F3255]">
+
+
+                <p className=" font-island font-normal  text-[clamp(30px,10vw,100px)] tracking-normal text-center"> Varnan is where stories find their voice and form</p>
 
 
             </div>
 
-            <div class="absolute w-[565px] bg-green-500 h-[565px] top-[257px] left-[190px] opacity-100">
-                <img src="/Hero Mandala.png" alt="Hero Mandala" />
 
-
-
-
-
-                <div class="absolute top-[200px] left-[100px] w-[388px] h-[150px] opacity-100 bg-amber-600">
-                    <img src="/VFilms Logo.png" alt="VFilms logo" />
-
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-
-
-            <div className="bg-green-500 w-[322px] h-[63px] top-[526px] left-[1148px] absolute">
-                <p class="font-['Halant'] font-normal not-italic text-[40px] leading-[100%] tracking-normal text-[#F15D2B] text-center">
+            <div className=" w-[clmap(200px,322px)] h-[63px]   ">
+                <p class="font-['Halant'] font-normal not-italic text-[clmap(40px)]  tracking-normal text-[#F15D2B] text-center">
                     Films . Brands . Art
                 </p>
 
             </div>
 
-
-            <div className="absolute w-[487px] h-[154px] top-[673px] left-[1066px] opacity-100">
-                <p class="font-['Instrument Sans'] font-normal not-italic text-[18px] text-[#252729] leading-[100%] tracking-normal text-center">
+            <div className="    ">
+                <p class="  font-['Instrument Sans'] p-[clamp(2%,10%,20%)]  font-normal not-italic text-[clmap(15px,18px,22px)] text-[#252729]   text-center">
                     Since 2009, V’ve been telling stories - stories of people, their journeys, and the places that shape them.
                     Some begin in polished boardrooms, others in humble village squares. But every story starts the same way - by listening with intention. V believes it takes trust, patience, and an eye for the unseen to capture what truly matters.
                     V doesn’t just tell stories - V honors them.
                 </p>
 
             </div>
+
+
+         </div>   
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+            
+
+
+            
 
         </div>
     )
