@@ -20,14 +20,14 @@ function Contact() {
         e.preventDefault();
 
         if (!formDetails.name || !formDetails.email || !formDetails.phone || !formDetails.message) {
-            alert("all fields are required");
+           
             setfromMsg("All fields are required")
             return;
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formDetails.email)) {
-            alert(" invalid email")
+           
             setfromMsg("Invalid email")
             return;
         }
@@ -51,14 +51,14 @@ function Contact() {
 
             if (formRequest.status === 201) {
                 alert(formRequest.data.message)
-                setfromMsg(formRequest.data.message)
+                setfromMsg("Send Successfully")
              
                 setFormDetails({ name: "", email: "", phone: "", message: "" });
             }
 
         } catch (error) {
             console.error(error)
-            alert("something went wrong")
+           
             setfromMsg("Something went-wrong")
 
         }
@@ -122,9 +122,9 @@ function Contact() {
                 <form className="  w-[90%]  flex flex-col m-2.5 gap-2     " onSubmit={handleSubmit} >
                     <div className="flex flex-col m-2.5 gap-2  ">
                         <div onChange={handleChange} className=" h-20 bg-[#FFFFFF] pl-4.5 text-center  "  >
-                            <p className="font-island  xl:text-4xl font-bold sm:text-3xl">form status</p>
+                            <p className="font-island text-xl xl:text-4xl font-bold sm:text-3xl">form status</p>
                             <p >
-                                {formMsg?<p className="text-red-600 ">{formMsg}</p>:<p className="text-green-600 text-center">{typing ? "Typing..." : <p className="text-red-500">Waiting...</p>}</p>
+                                {formMsg?<p className="text-red-600  ">{formMsg}</p>:<p className="text-green-600 text-center">{typing ? "Typing..." : <p className="text-red-500">Waiting...</p>}</p>
 }
 
                             </p>
