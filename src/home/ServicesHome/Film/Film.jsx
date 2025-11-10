@@ -79,14 +79,16 @@ function Film() {
 
 
 
-            <div className=" mt-5  h-[80%] flex flex-col xl:flex-row items-center  gap-[10%] ">
+            <div className=" mt-5  h-[80%] flex flex-col xl:flex-row items-center  gap-[2%] xl:gap-[10%]">
 
-                 <div className=" w-[70%] h-[90%] xl:h-[40%] xl:w-[40%] flex flex-col gap-[9.5px] opacity-100 shadow-[0px_11.4px_38px_0px_rgba(0,0,0,0.25)] xl:ml-[20%]">
-                    <img src="/images/sample.jpg" alt="Sample" class="w-full h-full rounded-xl object-cover" />
+                 <div className="  w-[70%] h-[60%] p-4 xl:h-[60%] xl:w-[40%] flex items-center flex-col gap-[9.5px] opacity-100 shadow-[0px_11.4px_38px_0px_rgba(0,0,0,0.25)] xl:ml-[20%]">
+                    <img src="/filmP.png" alt="film" class="w-[90%] h-[90%] bg-pink-600   object-fit" />
+                    <p className="font-['Halant'] font-semibold not-italic text-xl text-center ">Film Production</p>
+
                 </div>
 
-                <div className=" w-[70%] h-[90%]  xl:h-[40%] xl:w-[50%] xl:mr-[20%]  left-[907px] rotate-0 opacity-100">
-                    <p className="font-['Instrument_Sans']   font-normal  text-[#252729] xl:text-[20px] ">
+                <div className=" w-[70%] h-[80%]  xl:h-[40%]  xl:w-[50%] xl:mr-[20%]  left-[907px] rotate-0 opacity-100">
+                    <p className="font-['Instrument_Sans']   font-normal  text-[#252729] text-[12px] xl:text-[20px] ">
                         Who says films are just an escape?
                         We see them as a way to live many lives - to feel, to explore, and to tell stories that stay. And with each film, we carry new memories and new reasons to keep creating.
                         <br />

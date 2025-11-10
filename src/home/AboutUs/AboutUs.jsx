@@ -2,8 +2,13 @@ function AboutUs() {
     return (
         <div className="w-screen h-screen  grid xl:grid-cols-2     ">
 
+            <div className="absolute right-10 -bottom-22 hidden xl:block  w-[40%] h-[30%] " >
+                <img src="mount.png" alt="mountain"/>
+
+            </div>
 
             <div className="w-[94%] h-[90%]  flex flex-col justify-evenly  ml-[4%] gap-10 mt-[5%]">
+
 
 
 
@@ -86,7 +91,7 @@ function AboutUs() {
 
 
 
-            <div className="w-[90%] h-[90%] ml-[4%] mt-[5%]">
+            <div className="w-[90%]  h-[90%] ml-[4%] mt-[5%]">
                 <div className=" xl:h-[50%]  text-3xl  xl:text-[70px]   text-center  opacity-100 rotate-0 ">
                     <p className="font-['Island_Moments']   font-normal  ">
                         Every project is more than just a brief - it's a new chapter waiting to be written.
@@ -96,9 +101,12 @@ function AboutUs() {
 
 
 
+
+
                 
 
             </div>
+
 
 
 
